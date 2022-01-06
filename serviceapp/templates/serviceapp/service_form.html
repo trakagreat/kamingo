@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fill the form</title>
+</head>
+<body>
+<form method="post">
+        {% for field in form %}
+            <div>
+            {{ field.label_tag }}
+            </div>
+            {{ field }}
+        {% endfor %}
+<button type="submit">Submit</button>
+</form>
+</body>
+</html>
