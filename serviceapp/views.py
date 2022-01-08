@@ -4,6 +4,9 @@ from .models import ServiceModel
 
 
 # Create your views here.
+# Create your views here.
+def front_page(request):
+    return render( request, 'base.html')
 
 def service_form(request):
     form = ServiceForm()
