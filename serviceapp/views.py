@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import ServiceForm
+from .models import ServiceModel
 
 
 # Create your views here.
