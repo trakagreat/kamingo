@@ -6,7 +6,7 @@
     /* color: aqua; */
     box-sizing: border-box;
     border-radius: 12px;
-    box-shadow: 2px 3px 7px;
+    box-shadow: 2px 3px 7px rgba(2, 0, 0, 0.2);
     margin: 11px;
     
     /* width: 1000px; */
