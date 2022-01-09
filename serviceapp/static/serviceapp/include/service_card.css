@@ -5,9 +5,9 @@
     /* justify-content: center; */
     /* color: aqua; */
     box-sizing: border-box;
-    border: 2px solid rgb(255, 255, 255);
-    border-radius: 12px 13px 24px 12px;
-    box-shadow: 16px -6px 21px -2px;;
+
+    border-radius: 12px;
+    box-shadow: 2px 3px 7px;
     margin: 11px;
     /* width: 25%; */
 }
