@@ -4,7 +4,16 @@
 {% block title %}
 
 {% endblock %}
+{% block css_linking_block %}
+    <link rel="stylesheet" href="{% static 'serviceapp/include/service_card.css' %}">
+{% endblock %}
+
 {% block body %}
-
-
+    <ul>
+    {% for service in services %}
+    <li>
+        {% include 'serviceapp/includes/service_card.html' %}
+    </li>
+    {% endfor %}
+    </ul>
 {% endblock %}

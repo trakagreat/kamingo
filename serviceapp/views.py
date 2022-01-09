@@ -6,7 +6,10 @@ from .models import ServiceModel
 # Create your views here.
 # Create your views here.
 def front_page(request):
-    return render(request, 'base.html')
+    services = ServiceModel.objects.all()
+    return render(request, 'serviceapp/front_page.html', {
+        'services': services
+    })
 
 
 def service_form_view(request):
