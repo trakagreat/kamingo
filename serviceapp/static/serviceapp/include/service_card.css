@@ -17,6 +17,9 @@ margin: 11px;
     display: flex;
     flex-direction: column;
 }
+#rr{
+    display: block;
+}
 .container{
     display: flex;
     align-items: center;
