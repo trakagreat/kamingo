@@ -9,11 +9,17 @@
 {% endblock %}
 
 {% block body %}
-    <ul>
-    {% for service in services %}
-    <li>
-        {% include 'serviceapp/includes/service_card.html' %}
-    </li>
-    {% endfor %}
-    </ul>
+<div class="all">
+
+    <div class="data">
+    
+        <ul class="frontkaul">
+        {% for service in services %}
+        <li>
+            {% include 'serviceapp/includes/service_card.html' %}
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}
