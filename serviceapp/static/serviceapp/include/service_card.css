@@ -7,6 +7,7 @@
     box-sizing: border-box;
     border: 2px solid black;
     border-radius: 12px 13px 24px 12px;
+    box-shadow: 16px -6px 21px -2px;;
     margin: 11px;
     /* width: 25%; */
 }
@@ -29,5 +30,4 @@ margin: 11px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
 }
