@@ -5,13 +5,13 @@
     /* justify-content: center; */
     /* color: aqua; */
     box-sizing: border-box;
-
+    border: 2px solid black;
     border-radius: 12px;
     box-shadow: 2px 3px 7px;
     margin: 11px;
     
-    width: 100%;
-    
+    /* width: 1000px; */
+
 }
 .database ul li{
 margin: 11px;
@@ -19,13 +19,18 @@ list-style-type: none;
 }
 .data{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 #rr{
-    display: block;
+    /* display: block; */
+      display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
-.container{
+#contentt{
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
