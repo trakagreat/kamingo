@@ -11,7 +11,7 @@ def login_page(request):
 
 
 def register_page(request):
-    form = RegisterUserForm
+    form = RegisterUserForm()
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)
         if form.is_valid():

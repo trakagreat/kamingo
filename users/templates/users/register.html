@@ -14,7 +14,17 @@
     <body>
         <form action="" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form.username.label }}
+            {{ form.username }}
+
+            {{ form.email.label }}
+            {{ form.email }}
+
+            {{ form.password1.label }}
+            {{ form.password1 }}
+
+            {{ form.password2.label }}
+            {{ form.password2 }}
 
             <div style="margin-top: 30px;">
                 <button class="btn btn-primary" style="width: 135px;
