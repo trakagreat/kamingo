@@ -1,22 +1,60 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="service.css">
-    <meta charset="UTF-8">
-    <title>fill the form</title>
-    <link rel="stylesheet" href="{% static 'serviceapp/service.css' %}">
-</head>
-<body>
-<form method="POST" action="{% url 'service_form_url' %}" class="main-form">
-{% csrf_token %}
-        {% for field in form %}
-            <div class="service-inputs">
-            {{ field.label_tag }}
+    <head>
+        <link rel="stylesheet" href="service.css">
+        <meta charset="UTF-8">
+        <title>fill the form</title>
+        <link rel="stylesheet" href="{% static 'serviceapp/service.css' %}">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+
+    </head>
+    <body>
+        <section class="contact-clean">
+
+            <form method="POST" action="{% url 'service_form_url' %}"
+                class="main-form">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="mb-3 service-inputs">
+                     {{ field.label_tag }}
+                    </div>
+                {{ field }}
+                {% endfor %}
+
+                <div class="mb-3"><button class="btn btn-primary" type="submit">Submit
+                </button></div>
             </div>
-            {{ field }}
-        {% endfor %}
-<button type="submit">Submit</button>
-</form>
-</body>
+        </form>
+    </section>
+
+   
+    </body>
 </html>
+
+
+<section class="contact-clean">
+        <form method="post">
+            <h2 class="text-center">Register Your Self</h2>
+            <div class="mb-3"><input type="text" class="form-control"
+                    name="name" placeholder="Name" /></div>
+            <div class="mb-3"><input type="text" class="form-control"
+                    name="title" placeholder="Title" /></div>
+            <div class="mb-3"><input type="text" class="form-control"
+                    name="name" placeholder="Cost" /></div>
+            <div class="mb-3"><input type="text" class="form-control"
+                    name="name" placeholder="Contact" /></div>
+            <div class="mb-3"><input type="text" class="form-control"
+                    placeholder="Service provider name" /></div>
+            <div class="mb-3"><input type="text" class="form-control"
+                    name="name" placeholder="Service provider name" /></div>
+            <div class="mb-3"><input type="text" class="form-control"
+                    name="name" placeholder="Address" /></div>
+            <div class="mb-3"><button class="btn btn-primary" type="submit">send
+                </button></div>
+        </form>
+    </section>
