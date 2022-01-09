@@ -1,0 +1,24 @@
+.database{
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* color: aqua; */
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 12px 13px 24px 12px;
+    margin: 11px;
+    /* width: 25%; */
+}
+.database ul li{
+margin: 11px;
+}
+.data{
+    display: flex;
+    flex-direction: column;
+}
+.frontkaul{
+    display: flex;
+    flex-direction: row;
+flex-wrap: wrap;
+}
