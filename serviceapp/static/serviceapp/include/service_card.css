@@ -17,8 +17,14 @@ margin: 11px;
     display: flex;
     flex-direction: column;
 }
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .frontkaul{
     display: flex;
     flex-direction: row;
-flex-wrap: wrap;
+    flex-wrap: wrap;
+
 }
