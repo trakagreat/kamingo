@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="{% static 'serviceapp/service.css' %}">
 </head>
 <body>
-<form method="POST" action="{% url 'service_form_url' %}">
+<form method="POST" action="{% url 'service_form_url' %}" class="main-form">
 {% csrf_token %}
         {% for field in form %}
-            <div>
+            <div class="service-inputs">
             {{ field.label_tag }}
             </div>
             {{ field }}
