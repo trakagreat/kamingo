@@ -3,7 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterUserForm
 from django.contrib.auth import authenticate, login, logout
 
-
 # Create your views here.
 
 
