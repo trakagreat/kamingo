@@ -15,10 +15,14 @@
     </head>
     <body>
         <section class="contact-clean">
-
-            <form method="POST" action="{% url 'service_form_url' %}"
-                class="" novalidate>
-               
+{#            <form action="" method="POST">#}
+{#                {% csrf_token %}#}
+{#                {{ image_form }}#}
+{#                <button type="submit"> submit#}
+{#                </button>#}
+{#            </form>#}
+            <form method="POST" action="{% url 'service_form_url' %}" enctype="multipart/form-data"
+                novalidate>
                 {% csrf_token %}
                 <div class="container">
                         <div class="row">
@@ -36,8 +40,6 @@
                                         {% for error in field.errors %}
                                          {{ error }}
                                         {% endfor %}
-
-
                                     {% endif %}
                                 {% endfor %}
                 
