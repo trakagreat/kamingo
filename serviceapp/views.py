@@ -21,10 +21,12 @@ class ServiceFormView(View):
             "form": service_form
         })
 
-    def post(self,request):
+    def post(self, request):
         service = ServiceForm(request.POST)
         if service.is_valid():
             new_service = service.save(commit=False)
             new_service.save()
             return HttpResponseRedirect(reverse('front-page'))
-        # return HttpResponseRedirect(reverse('service_form_url'))
+        return render(request, 'serviceapp/service_form.html', {
+            "form": service
+        })

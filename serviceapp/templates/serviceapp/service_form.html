@@ -17,7 +17,7 @@
         <section class="contact-clean">
 
             <form method="POST" action="{% url 'service_form_url' %}"
-                class=""> 
+                class="" novalidate>
                
                 {% csrf_token %}
                 <div class="container">
@@ -32,6 +32,13 @@
                                      {{ field.label_tag }}
                                     </div>
                                 {{ field }}
+                                    {% if form.errors %}
+                                        {% for error in field.errors %}
+                                         {{ error }}
+                                        {% endfor %}
+
+
+                                    {% endif %}
                                 {% endfor %}
                 
                                 <div style=" margin-top: 30px; ">
