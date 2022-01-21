@@ -10,7 +10,7 @@ class CategoryModel(models.Model):
 
 
 class ServiceModel(models.Model):
-    image = models.ImageField(upload_to="service_photos", null=True , blank=True)
+    image = models.ImageField(upload_to="service_photos", null=True)
     title = models.CharField(max_length=100)
     category = models.ForeignKey(CategoryModel, on_delete=models.SET_NULL, related_name='category', null=True)
     cost = models.IntegerField()

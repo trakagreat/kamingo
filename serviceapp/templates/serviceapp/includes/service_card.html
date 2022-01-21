@@ -2,7 +2,9 @@
     <ul>
         <li>
             <div class="" style="" >
-            <img width="400px" height="400px" src="{{ service.image.url }}" alt="">
+                {% if service.image %}
+                    <img width="200rem" height="200rem" src="{{ service.image.url }}" alt="">
+                {% endif %}
             </div>
         </li>
         <li>
