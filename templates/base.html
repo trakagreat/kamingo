@@ -35,13 +35,26 @@
                 </ul>
                 <form class="d-flex">
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="user/login"><button type="button" class="btn btn-outline-primary">Login</button>
+                      {% if not user.is_authenticated %}
+                                        <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'account_login' %}"><button type="button" class="btn btn-outline-primary">Login</button>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="user/register"><button type="button" class="btn btn-outline-info">Register</button>
+                    <a class="nav-link" href="{% url 'account_signup' %}"><button type="button" class="btn btn-outline-info">Register</button>
                     </a>
+                  </li>
+                      {% else %}
+                           <li class="nav-item">
+                               <h3 style="color: aliceblue">{{ user.username| title }}</h3>
+
+                  </li>
+                           <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_logout' %}"><button type="button" class="btn btn-outline-info">Logout</button>
+                    </a>
+                  </li>
+                      {% endif %}
+
                   </ul>
 
                   <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
