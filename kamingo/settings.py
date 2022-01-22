@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
 
+    'star_ratings',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',

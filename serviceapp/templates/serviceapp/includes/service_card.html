@@ -16,6 +16,9 @@
         <li>{{ service.address }}</li>
         <h5>Contact</h5>
         <li>{{ service.contact }}</li>
+        <h5>Rating</h5>
+        <li>{{ service.review.rating }}</li>
+        <li>  <a class="btn btn-success" href="{% url 'service-detail-page' service.pk %} "> view </a> </li>
 
     </ul>
 </div>

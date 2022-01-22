@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load ratings %}
+{% block title %}
+
+{% endblock %}
+{% block css_linking_block %}
+    <link rel="stylesheet" href="{% static 'serviceapp/include/service_card.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div class="">
+    <ul>
+        <li>
+            <div class="" style="" >
+                {% if service.image %}
+                    <img width="200rem" height="200rem" src="{{ service.image.url }}" alt="">
+                {% endif %}
+            </div>
+        </li>
+        <li>
+            <h2 style="text-align: center;">{{ service.title }}</h2>
+        </li>
+        <h5>Cost</h5>
+        <li>{{ service.cost }}</li>
+        <h5>Address</h5>
+        <li>{{ service.address }}</li>
+        <h5>Contact</h5>
+        <li>{{ service.contact }}</li>
+        <h5>Rating</h5>
+        <li>{{ service.rating }}</li>
+
+        <form method="POST" action="{% url 'service-detail-page' service.pk %}" novalidate>
+            {% csrf_token %}
+            {{ form }}
+            <button class="btn btn-success" type="submit"  > submit </button>
+
+        </form>
+    </ul>
+</div>
+
+{% endblock %}

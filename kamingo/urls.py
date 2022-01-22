@@ -22,6 +22,7 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include('serviceapp.urls')),
                   path('user/', include('users.urls')),
-                  path('accounts/', include('allauth.urls'))
+                  path('accounts/', include('allauth.urls')),
+                  path('ratings/', include('star_ratings.urls', namespace='ratings'))
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
               + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

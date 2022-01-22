@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load ratings %}
 {% block title %}
 
 {% endblock %}
 {% block css_linking_block %}
     <link rel="stylesheet" href="{% static 'serviceapp/include/service_card.css' %}">
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
 {% endblock %}
 
 {% block body %}
@@ -16,11 +17,16 @@
         <div class=" frontkaul" >
 
             {% include 'serviceapp/includes/service_card.html' %}
-
         </div>
         {% endfor %}
     </div>
 
 </div>
 
+
+
+
+
+
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.js' %}"></script>
 {% endblock %}

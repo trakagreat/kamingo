@@ -3,12 +3,19 @@ import random
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from uuid import uuid4
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
-def path_and_rename(instance,filename):
+# file renaming function ----------------
+def path_and_rename(instance, filename):
     ext = filename.split('.')[-1]
-    randomstr = '{}.{}'.format( uuid4().hex , ext )
-    return os.path.join( 'service_photos' ,randomstr)
+    randomstr = '{}.{}'.format(uuid4().hex, ext)
+    return os.path.join('service_photos', randomstr)
+
+
+# models ----------------------------
+class ReviewModel(models.Model):
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], default=0)
 
 
 class CategoryModel(models.Model):
@@ -26,6 +33,7 @@ class ServiceModel(models.Model):
     service_provider_name = models.CharField(max_length=100)
     contact = PhoneNumberField()
     address = models.CharField(max_length=200, null=True)
+    review = models.OneToOneField(ReviewModel, on_delete=models.CASCADE , null=True)
 
     def __str__(self):
         return self.title

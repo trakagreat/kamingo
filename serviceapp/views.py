@@ -1,5 +1,5 @@
 from django.shortcuts import render, reverse
-from .forms import ServiceForm, ImageForm
+from .forms import ServiceForm, ReviewForm
 from .models import ServiceModel
 from django.views import View
 from django.http import HttpResponseRedirect
@@ -33,3 +33,28 @@ class ServiceFormView(View):
             return render(request, 'serviceapp/service_form.html', {
                 "form": service
             })
+
+class ServiceDetailView(View):
+    def get(self , request ,pk):
+        service = ServiceModel.objects.get(pk=pk)
+        review_form = ReviewForm()
+        context={
+          'service' : service,
+            'form' : review_form,
+        }
+
+        return render( request , 'serviceapp/service_detail_page.html', context )
+    def post(self , request ,pk):
+        review = ReviewForm(request.POST)
+        service = ServiceModel.objects.get(pk=pk)
+        if review.is_valid():
+            new_review = review.save( commit=False)
+            new_review.save()
+            service.review = new_review
+            service.save()
+        context = {
+            'service': service,
+            'form': review,
+        }
+
+        return render(request, 'serviceapp/service_detail_page.html', context)
