@@ -1,5 +1,14 @@
+import os.path
+import random
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from uuid import uuid4
+
+
+def path_and_rename(instance,filename):
+    ext = filename.split('.')[-1]
+    randomstr = '{}.{}'.format( uuid4().hex , ext )
+    return os.path.join( 'service_photos' ,randomstr)
 
 
 class CategoryModel(models.Model):
@@ -10,7 +19,7 @@ class CategoryModel(models.Model):
 
 
 class ServiceModel(models.Model):
-    image = models.ImageField(upload_to="service_photos", null=True)
+    image = models.ImageField(upload_to=path_and_rename, null=True)
     title = models.CharField(max_length=100)
     category = models.ForeignKey(CategoryModel, on_delete=models.SET_NULL, related_name='category', null=True)
     cost = models.IntegerField()
@@ -24,4 +33,3 @@ class ServiceModel(models.Model):
 
 class ImageModel(models.Model):
     image = models.ImageField(upload_to="service_photos", null=True)
-
