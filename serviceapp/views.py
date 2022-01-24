@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse
 from .forms import ServiceForm, ReviewForm
-from .models import ServiceModel
+from .models import ServiceModel, ReviewModel
 from django.views import View
 from django.http import HttpResponseRedirect
 
@@ -34,24 +34,35 @@ class ServiceFormView(View):
                 "form": service
             })
 
+
 class ServiceDetailView(View):
-    def get(self , request ,pk):
+    def get(self, request, pk):
         service = ServiceModel.objects.get(pk=pk)
         review_form = ReviewForm()
-        context={
-          'service' : service,
-            'form' : review_form,
+        if request.user.is_authenticated:
+            user_review = ReviewModel.objects.filter(service=service, user=request.user)
+        else:
+            user_review = None
+        context = {
+            'service': service,
+            'form': review_form,
+            'user_review':user_review,
         }
 
-        return render( request , 'serviceapp/service_detail_page.html', context )
-    def post(self , request ,pk):
+        return render(request, 'serviceapp/service_detail_page.html', context)
+
+    def post(self, request, pk):
         review = ReviewForm(request.POST)
         service = ServiceModel.objects.get(pk=pk)
         if review.is_valid():
-            new_review = review.save( commit=False)
+            new_review = review.save(commit=False)
+            new_review.service = service
+            new_review.user = request.user
             new_review.save()
-            service.review = new_review
-            service.save()
+            return HttpResponseRedirect(reverse('service-detail-page', kwargs={
+                'pk': pk,
+            }))
+
         context = {
             'service': service,
             'form': review,

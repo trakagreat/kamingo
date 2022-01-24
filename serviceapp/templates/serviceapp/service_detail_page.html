@@ -28,15 +28,26 @@
         <h5>Contact</h5>
         <li>{{ service.contact }}</li>
         <h5>Rating</h5>
-        <li>{{ service.rating }}</li>
+        <li>{{ service.get_rating | floatformat:1 }}</li>
+{% if user.is_authenticated %}
+    {% if not user_review %}
+    <form method="POST" action="{% url 'service-detail-page' service.pk %}" novalidate>
+                {% csrf_token %}
+                {{ form }}
+                <button class="btn btn-success" type="submit"  > submit </button>
 
-        <form method="POST" action="{% url 'service-detail-page' service.pk %}" novalidate>
-            {% csrf_token %}
-            {{ form }}
-            <button class="btn btn-success" type="submit"  > submit </button>
+            </form>
 
-        </form>
+        {% else %}
+        <p>already reviewed</p>
+{% endif %}
+{% else %}
+    <p>please login </p>
+
+{% endif %}
     </ul>
+
+    {% include 'serviceapp/includes/reviews_ratings.html' %}
 </div>
 
 {% endblock %}

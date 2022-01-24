@@ -1,0 +1,19 @@
+<div class="">
+    <ul>
+        {% for review in service.reviews.all%}
+             <li>
+            {{ review.date_added | date:'d-m-Y' }}
+            </li>
+            <li>
+            {{ review.rating }}
+            </li>
+            <li>
+            {{ review.content }}
+            </li>
+
+        {% endfor %}
+
+
+
+    </ul>
+</div>

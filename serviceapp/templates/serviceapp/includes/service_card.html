@@ -1,44 +1,25 @@
 <div class="database">
     <ul>
         <li>
-            <div class="" style="" >
+            <div class="" style="text-align: center;" >
                 {% if service.image %}
-                    <img width="200rem" height="200rem" src="{{ service.image.url }}" alt="">
+                    <img width="450rem" height="300rem" src="{{ service.image.url }}" alt="">
                 {% endif %}
             </div>
         </li>
         <li>
             <h2 style="text-align: center;">{{ service.title }}</h2>
         </li>
-        <h5>Cost</h5>
-        <li>{{ service.cost }}</li>
-        <h5>Address</h5>
+        <hr>
+        <p class="text">Cost</p>
+        <li style="color: coral; font-family: 'Arial Black'; ">{{ service.cost }}</li>
+        <p class="text">Address</p>
         <li>{{ service.address }}</li>
-        <h5>Contact</h5>
+        <p class="text">Contact</p>
         <li>{{ service.contact }}</li>
-        <h5>Rating</h5>
-        <li>{{ service.review.rating }}</li>
+        <p class="text">Rating</p>
+        <li>{{ service.get_rating | floatformat:1 }}</li>
         <li>  <a class="btn btn-success" href="{% url 'service-detail-page' service.pk %} "> view </a> </li>
 
     </ul>
 </div>
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            {{ service.title }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            {{ service.cost }}
-        </div>
-    <div class="row">
-        <div class="col-md-12">
-            {{ service.address }}
-        </div>
-    <div class="row">
-        <div class="col-md-12">
-            {{ service.contact }}
-        </div>
-    </div>
-</div> -->

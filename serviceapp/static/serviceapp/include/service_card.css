@@ -12,16 +12,17 @@
     max-width: 30rem;
     height: auto;
     min-height: 30rem;
-    
+
     /* width: 1000px; */
 
 }
 .database ul li{
-margin: 11px;
+
 list-style-type: none;
 
 }
 .database ul{
+    /*margin-top: 0.7rem;*/
     padding-left: 1rem;
 padding-right: 1rem;
 }
@@ -48,5 +49,15 @@ padding-right: 1rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    
+
+}
+h1,h2{
+    font-family: Arial;
+}
+
+.text{
+
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+
 }

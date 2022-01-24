@@ -6,7 +6,7 @@ class ServiceForm(ModelForm):
     class Meta:
         model = ServiceModel
         fields = '__all__'
-        exclude = ('rating',)
+        exclude = ('review',)
 
 
 class ImageForm(ModelForm):
@@ -19,4 +19,4 @@ class ImageForm(ModelForm):
 class ReviewForm(ModelForm):
     class Meta:
         model =ReviewModel
-        fields = '__all__'
+        fields = ['rating' , 'content']
