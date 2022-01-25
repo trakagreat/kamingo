@@ -1,13 +1,18 @@
 {% extends "account/base.html" %}
+{% load static %}
+
 
 {% load i18n %}
+{% block css_linking_block %}
+<link rel="stylesheet" href="{% static '/kamingo/login.css' %}">
+{% endblock %}
 {% load account socialaccount %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
 
-<h1>{% trans "Sign In To Kamingo" %}</h1>
+<h1 class = "main-head">{% trans "Sign In To Kamingo" %}</h1>
 
 {% get_providers as socialaccount_providers %}
 

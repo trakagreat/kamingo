@@ -1,15 +1,30 @@
-<div class="container d-flex m-3 p-3">
+<div class="container m-3 p-3">
     <ul class = "review-box col-6 col-sm-3">
         {% for review in service.reviews.all%}
-             <li>
-            {{ review.date_added | date:'d-m-Y' }}
+        <div class="container">
+
+            <li class="usernames-class">
+                {{ review.user.username  }}
             </li>
-            <li>
-            {{ review.rating }}
+        </div>
+        <div class="container">
+
+            <li class="rating-class">
+                {{ review.rating }}
             </li>
-            <li>
-            {{ review.content }}
+        </div>
+        <div class="container">
+
+            <li class="date-class">
+                {{ review.date_added | date:'d-m-Y' }}
             </li>
+        </div>
+        <div class="container">
+
+            <li class="messege-class">
+                {{ review.content }}
+            </li>
+        </div>
         </ul>
         <ul class = "review-box col-6 col-sm-3">
           {% endfor %}
