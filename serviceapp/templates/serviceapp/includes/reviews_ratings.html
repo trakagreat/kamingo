@@ -1,5 +1,5 @@
-<div class="">
-    <ul>
+<div class="container d-flex m-3 p-3">
+    <ul class = "review-box col-6 col-sm-3">
         {% for review in service.reviews.all%}
              <li>
             {{ review.date_added | date:'d-m-Y' }}
@@ -10,10 +10,11 @@
             <li>
             {{ review.content }}
             </li>
+        </ul>
+        <ul class = "review-box col-6 col-sm-3">
+          {% endfor %}
+      </ul>
 
-        {% endfor %}
 
 
-
-    </ul>
 </div>
