@@ -1,19 +1,23 @@
+
+body{
+    font-family: 'Luckiest Guy', cursive;;
+}
+
 .database{
     /* display: flex; */
     /* flex-direction: row; */
     /* align-items: center; */
     /* justify-content: center; */
     /* color: aqua; */
-    box-sizing: border-box;
+     box-sizing: border-box;
     border-radius: 12px;
     box-shadow: 2px 3px 7px rgba(2, 0, 0, 0.2);
     margin: 11px;
     min-width: 30rem;
     max-width: 30rem;
     height: auto;
-    min-height: 30rem;
+    min-height: 30rem; 
 
-    /* width: 1000px; */
 
 }
 .database ul li{
@@ -22,7 +26,6 @@ list-style-type: none;
 
 }
 .database ul{
-    /*margin-top: 0.7rem;*/
     padding-left: 1rem;
 padding-right: 1rem;
 }
@@ -30,16 +33,15 @@ padding-right: 1rem;
 .data{
     display: flex;
     flex-direction: row;
-}
+} 
 #rr{
-    /* display: block; */
       display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-}
-#contentt{
+} 
+ #contentt{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -56,8 +58,35 @@ h1,h2{
 }
 
 .text{
-
     margin-top: 1rem;
     margin-bottom: 0rem;
+}
+.main-heading{
+    /* border: 2px solid rgb(0, 0, 0); */
+    margin-top: 11px;
+    color: rgb(0, 0, 0);
+}
 
+.iit-img img{
+
+    height: 350px;
+    width: 500px;
+}
+.detials{
+    /* border: 1px solid rgb(0, 0, 0); */
+    height: 50%;
+    padding : 27px;
+margin-top: 14px;
+margin-left: 20px;
+}
+
+
+/* ============-----------------------------reviwestyle----------------------------------------------------------------- */
+
+.review-box{
+/* border: 3px solid black; */
+margin: 11px;
+}
+.review-box li{
+margin: 11px;
 }
