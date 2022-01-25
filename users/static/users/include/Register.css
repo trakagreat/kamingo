@@ -24,3 +24,9 @@
     width: 444px; 
 
 }
+#signup_form{
+    background-color: blue;
+}
+#id_username{
+    margin-top: 44px;
+}

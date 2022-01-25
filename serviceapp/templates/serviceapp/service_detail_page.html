@@ -9,20 +9,23 @@
 {% endblock %}
 
 {% block body %}
-    <div class="">
-    <ul>
+    <div class="container ">
+        <h2 class="display-1 text-center">{{ service.title }}</h2>
+    <ul class = "d-flex">
+        {% comment %} <li> {% endcomment %}
+        {% comment %} </li> {% endcomment %}
         <li>
-            <div class="" style="" >
+            <div class="iit-img">
                 {% if service.image %}
-                    <img width="200rem" height="200rem" src="{{ service.image.url }}" alt="">
+                    <img width="200rem" height="200rem"src="{{ service.image.url }}" alt="">
                 {% endif %}
             </div>
         </li>
+        <div class="containe detials">
+
+        <h5 >Cost</h5>
         <li>
-            <h2 style="text-align: center;">{{ service.title }}</h2>
-        </li>
-        <h5>Cost</h5>
-        <li>{{ service.cost }}</li>
+            {{ service.cost }}</li>
         <h5>Address</h5>
         <li>{{ service.address }}</li>
         <h5>Contact</h5>
@@ -43,6 +46,7 @@
 {% endif %}
 {% else %}
     <p>please login </p>
+</div>
 
 {% endif %}
     </ul>
