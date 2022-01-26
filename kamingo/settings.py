@@ -36,6 +36,10 @@ INSTALLED_APPS = [
 
     'star_ratings',
 
+    'address',
+
+    'django_filters',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -162,3 +166,5 @@ SOCIALACCOUNT_PROVIDERS = {
 SITE_ID = 3
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+GOOGLE_API_KEY ='AIzaSyBxlBzvDiUW5hEUGVwE6jSkLYy7LjwTwFI'

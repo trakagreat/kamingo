@@ -7,3 +7,5 @@ from .models import ServiceModel, CategoryModel , ReviewModel
 admin.site.register(ServiceModel)
 admin.site.register(CategoryModel)
 admin.site.register(ReviewModel)
+
+

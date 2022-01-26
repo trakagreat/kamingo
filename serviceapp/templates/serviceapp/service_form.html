@@ -1,7 +1,9 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
+
         <meta charset="UTF-8">
         <title>fill the form</title>
         <link rel="stylesheet" href="{% static 'serviceapp/service.css' %}">
@@ -11,6 +13,8 @@
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous">
 
+{#        needed_for_js#}
+        {{ form.media }}
     </head>
     <body>
         <section class="contact-clean">

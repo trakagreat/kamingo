@@ -1,35 +1,51 @@
-<div class="container m-3 p-3">
-    <ul class = "review-box col-6 col-sm-3">
-        {% for review in service.reviews.all%}
-        <div class="container">
+<div class="row p-3 shadow-sm " style="background-color: white">
+    <div class="col-md-6 " style="margin-left: 5rem;">
+     <h5> Reviews </h5>
+    </div>
 
-            <li class="usernames-class">
-                {{ review.user.username  }}
-            </li>
+</div>
+{% for review in service.reviews.all%}
+<div class="row p-3 shadow-sm mb-2" style="background-color: white" >
+    <div class = "col-md-6 " style="margin-left: 5rem;width: fit-content" >
+
+        <div class="row ">
+                    <div class=" col-md-6 w-auto ">
+                        <i class='fa fa-user-circle' style="font-size: 2rem;"></i>
+                    </div>
+                    <div class=" col-md-6 w-auto p-0">
+                        {{ review.user.username  }}
+                    </div>
         </div>
-        <div class="container">
+        <div class="row">
 
-            <li class="rating-class">
-                {{ review.rating }}
-            </li>
+
+                <p class="mb-0"><i class="fas fa-star" style="color: orange"></i>
+                            {{ review.rating | floatformat:1 }}</p>
+
+
         </div>
-        <div class="container">
+        <div class="row ">
 
-            <li class="date-class">
-                {{ review.date_added | date:'d-m-Y' }}
-            </li>
+            <p style="color: gray; font-size: 10px;" >
+                REVIEWED ON {{ review.date_added | date:'d-m-Y' }}
+            </p>
+
+
         </div>
-        <div class="container">
-
-            <li class="messege-class">
+        <div class="row">
+            <div class="col-md-6" >
+                  <p class="">
                 {{ review.content }}
-            </li>
+            </p>
+            </div>
+
         </div>
-        </ul>
-        <ul class = "review-box col-6 col-sm-3">
-          {% endfor %}
+        </div>
+
+
       </ul>
 
 
 
 </div>
+{% endfor %}

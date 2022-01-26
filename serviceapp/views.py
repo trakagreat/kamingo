@@ -1,17 +1,35 @@
+import requests
 from django.shortcuts import render, reverse
 from .forms import ServiceForm, ReviewForm
 from .models import ServiceModel, ReviewModel
 from django.views import View
+from django.views.generic import ListView
 from django.http import HttpResponseRedirect
+from .filters import ServiceFilter
 
 
 # Create your views here.
 # Create your views here.
-def front_page(request):
-    services = ServiceModel.objects.all()
-    return render(request, 'serviceapp/front_page.html', {
-        'services': services
-    })
+
+
+class FrontPageView(View):
+    def get(self, request):
+        f = ServiceFilter(request.GET, queryset=ServiceModel.objects.all())
+        context = {
+            'filter': f,
+        }
+        return render(request, 'serviceapp/front_page.html', context)
+
+
+# class ServiceListView(ListView):
+#     model = ServiceModel
+#     template_name = 'serviceapp/front_page.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['filter'] = ServiceFilter(self.request.GET, queryset=self.get_queryset())
+#         return context
+#
 
 
 class ServiceFormView(View):
@@ -46,7 +64,7 @@ class ServiceDetailView(View):
         context = {
             'service': service,
             'form': review_form,
-            'user_review':user_review,
+            'user_review': user_review,
         }
 
         return render(request, 'serviceapp/service_detail_page.html', context)
