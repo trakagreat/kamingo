@@ -18,11 +18,13 @@
     </div>
 <div class="containe" id="contentt">
     <div class="" id="rr">
+    <div class="row d-flex justify-content-center" style="width: 100%" >
         {% for service in filter.qs %}
-        <div class="row" >
+
             {% include 'serviceapp/includes/service_card.html' %}
-        </div>
+
         {% endfor %}
+    </div>
     </div>
 
 </div>
