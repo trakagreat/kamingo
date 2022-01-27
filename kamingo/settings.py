@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@*r1%m3!=7u)^vd=&4$fupjzed*9)g1(==8mt=_*qf_-cabjgs
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.43.17' , '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.43.17', '127.0.0.1']
 
 # Application definition
 
@@ -96,6 +96,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+import dj_database_url
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -170,7 +174,7 @@ SITE_ID = 3
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-GOOGLE_API_KEY ='AIzaSyBxlBzvDiUW5hEUGVwE6jSkLYy7LjwTwFI'
+GOOGLE_API_KEY = 'AIzaSyBxlBzvDiUW5hEUGVwE6jSkLYy7LjwTwFI'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
