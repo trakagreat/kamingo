@@ -3,60 +3,10 @@ body{
     font-family: 'Luckiest Guy', cursive;;
 }
 
-.database{
-    background-color: white;
-     box-sizing: border-box;
-    border-radius: 12px;
-    box-shadow: 2px 3px 7px rgba(2, 0, 0, 0.2);
-    margin: 11px;
-    min-width: 30rem;
-    max-width: 30rem;
-    height: auto;
-    min-height: 30rem; 
 
-
-}
-.database ul li{
-
-list-style-type: none;
-
-}
-.database ul{
-    padding-left: 1rem;
-padding-right: 1rem;
-    padding-top: 1rem;
-}
-
-.data{
-    display: flex;
-    flex-direction: row;
-} 
-#rr{
-      display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-} 
- #contentt{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-.frontkaul{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-}
-h1,h2{
-    font-family: Arial;
-}
 
 .text{
-    margin-top: 1rem;
-    margin-bottom: 0rem;
+    margin-bottom: 0; font-size: medium; color: gray;
 }
 .main-heading{
     /* border: 2px solid rgb(0, 0, 0); */
