@@ -33,7 +33,7 @@ class ServiceModel(models.Model):
     service_provider_name = models.CharField(max_length=100)
     contact = PhoneNumberField()
     address = models.CharField(max_length=200, null=True)
-    address2 = AddressField(null=True, blank=True , on_delete=models.CASCADE)
+    # address2 = AddressField(null=True, blank=True , on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
