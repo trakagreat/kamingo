@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import django_heroku
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -24,7 +26,7 @@ SECRET_KEY = 'django-insecure-@*r1%m3!=7u)^vd=&4$fupjzed*9)g1(==8mt=_*qf_-cabjgs
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.43.17' , '127.0.0.1']
 
 # Application definition
 
@@ -35,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
 
     'star_ratings',
+    'django_heroku',
 
     'address',
 
@@ -168,3 +171,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 GOOGLE_API_KEY ='AIzaSyBxlBzvDiUW5hEUGVwE6jSkLYy7LjwTwFI'
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
