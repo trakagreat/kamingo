@@ -1,51 +1,49 @@
-<div class="col-md-6 mb-3 mt-3 ">
-
-    <div class="card shadow-sm" style="border-radius: 0.3rem; outline: 2rem gray">
-        <img class="p-2" width="100%" height="300rem" src="{{ service.image.url }}" alt="">
-        <div class="card-body mt-1  " style="text-align: center; padding-bottom: 0.5rem;">
-            <h5 class="card-title">{{ service.title }}</h5>
-            <hr>
-        </div>
-        <div class="row m-1 " style="">
-            <p class="text">Cost</p>
-            <p style="margin-bottom: 0;"> {{ service.cost }}  </p>
-            <p class="text">Address</p>
-            <p style="margin-bottom: 0;word-wrap: break-word;">{{ service.address.address_line1 }} , {{ service.address.pin_code }}</p>
-            <p class="text">Contact</p>
-            <p style="margin-bottom: 0;">{{ service.contact }}</p>
-            <p class="text">Rating</p>
-            <p style="margin-bottom: 0;">{{ service.get_rating | floatformat:1 }}</p>
-        </div>
-        <div class="card-body">
-            <a class="btn btn-success" href="{% url 'service-detail-page' service.slug %} "> view </a></>
+{#<div class="col-md-6 mb-3 mt-3 ">#}
+{##}
+{#    <div class="card shadow-sm" style="border-radius: 0.3rem; outline: 2rem gray">#}
+{#        <img class="p-2" width="100%" height="300rem" src="{{ service.image.url }}" alt="">#}
+{#        <div class="card-body mt-1  " style="text-align: center; padding-bottom: 0.5rem;">#}
+{#            <h5 class="card-title">{{ service.title }}</h5>#}
+{#            <hr>#}
+{#        </div>#}
+{#        <div class="row m-1 " style="">#}
+{#            <p class="text">Cost</p>#}
+{#            <p style="margin-bottom: 0;"> {{ service.cost }}  </p>#}
+{#            <p class="text">Address</p>#}
+{#            <p style="margin-bottom: 0;word-wrap: break-word;">{{ service.address.address_line1 }}#}
+{#                , {{ service.address.pin_code }}</p>#}
+{#            <p class="text">Contact</p>#}
+{#            <p style="margin-bottom: 0;">{{ service.contact }}</p>#}
+{#            <p class="text">Rating</p>#}
+{#            <p style="margin-bottom: 0;">{{ service.get_rating | floatformat:1 }}</p>#}
+{#        </div>#}
+{#        <div class="card-body">#}
+{#            <a class="btn btn-success" href="{% url 'service-detail-page' service.slug %} "> view </a></#}
+{#        >#}
         {#    <a href="#" class="card-link">Another link</a>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#</div>#}
+<div class="card m-1 shadow-sm" style="max-width: 540px;">
+  <div class="row g-0">
+      <div class="container">
+    <div class="row">
+        <div class="col-4 " style="padding: 0.15rem; justify-content: left">
+                  <img style="width: 100%; height: 100%;" src="{{ service.image.url }}" class="img-fluid rounded" alt="...">
+
+        </div>
+        <div class="col-8 col-md-4">
+                 <div class="card-body">
+        <h6 class="card-title">{{ service.title | title }}</h6>
+
+        <p class="card-text mb-0" style="color: green; font-weight: bold; "><i class="fas fa-rupee-sign"></i> {{ service.cost }}</p>
+        <p class="card-text mb-0" style="color: orange; font-weight: bold; "><i class= "fas fa-star"></i> {{ service.get_rating | floatformat:1 }}</p>
+                 <p class="card-text mb-0;">{{ service.address.city}} , {{ service.address.pin_code }}</p>
+                 </div>
+        </div>
     </div>
 </div>
 
+  </div>
 </div>
-{#<div class="">#}
-{##}
-{##}
-{#            <div class="" style="text-align: center;">#}
-{#                {% if service.image %}#}
-{#                    <img width="100%" height="300rem" src="{{ service.image.url }}" alt="">#}
-{#                {% endif %}#}
-{#            </div>#}
-{##}
-{##}
-{#        <li>#}
-{#            <h2 style="text-align: center;">{{ service.title }}</h2>#}
-{#        </li>#}
-{#        <hr>#}
-{#        <p class="text">Cost</p>#}
-{#        <li style="color: coral; font-family: 'Arial Black'; ">{{ service.cost }}</li>#}
-{#        <p class="text">Address</p>#}
-{#        <li>{{ service.address }}</li>#}
-{#        <p class="text">Contact</p>#}
-{#        <li>{{ service.contact }}</li>#}
-{#        <p class="text">Rating</p>#}
-{#        <li>{{ service.get_rating | floatformat:1 }}</li>#}
-{#        <li><a class="btn btn-success" href="{% url 'service-detail-page' service.pk %} "> view </a></li>#}
-{##}
-{##}
-{#</div>#}

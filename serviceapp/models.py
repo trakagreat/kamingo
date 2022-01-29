@@ -1,6 +1,8 @@
 import os.path
 import random
 from django.db import models
+from django.db.models.signals import post_save
+from PIL import Image
 from phonenumber_field.modelfields import PhoneNumberField
 from uuid import uuid4
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -44,6 +46,7 @@ class ServiceModel(models.Model):
     address = models.ForeignKey(Address, on_delete=models.SET_NULL, related_name='address', null=True)
     slug = models.SlugField(unique=True, db_index=True, null=True, blank=True)
     description = models.CharField(max_length=600, null=True, blank=True)
+
     # address2 = AddressField(null=True, blank=True , on_delete=models.CASCADE)
 
     def __str__(self):
@@ -64,7 +67,6 @@ class ServiceModel(models.Model):
         self.slug = slugify(self.title)
 
 
-
 class ImageModel(models.Model):
     image = models.ImageField(upload_to="service_photos", null=True)
 
@@ -81,3 +83,14 @@ class ReviewModel(models.Model):
 
     class Meta:
         ordering = ['-date_added']
+
+
+# image compression code
+
+def image_compressor(sender, **kwargs):
+    if kwargs["created"]:
+        with Image.open(kwargs["instance"].image.path) as photo:
+            photo.save(kwargs["instance"].image.path, optimize=True, quality=50)
+
+
+post_save.connect(image_compressor, sender=ServiceModel)
