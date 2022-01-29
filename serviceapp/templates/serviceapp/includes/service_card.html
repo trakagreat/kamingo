@@ -1,7 +1,7 @@
-<div class="col-md-6">
+<div class="col-md-6 mb-3 mt-3 ">
 
-    <div class="card" style="">
-        <img width="100%" height="300rem" src="{{ service.image.url }}" alt="">
+    <div class="card shadow-sm" style="border-radius: 0.3rem; outline: 2rem gray">
+        <img class="p-2" width="100%" height="300rem" src="{{ service.image.url }}" alt="">
         <div class="card-body mt-1  " style="text-align: center; padding-bottom: 0.5rem;">
             <h5 class="card-title">{{ service.title }}</h5>
             <hr>
@@ -10,14 +10,14 @@
             <p class="text">Cost</p>
             <p style="margin-bottom: 0;"> {{ service.cost }}  </p>
             <p class="text">Address</p>
-            <p style="margin-bottom: 0;word-wrap: break-word;">{{ service.address }}</p>
+            <p style="margin-bottom: 0;word-wrap: break-word;">{{ service.address.address_line1 }} , {{ service.address.pin_code }}</p>
             <p class="text">Contact</p>
             <p style="margin-bottom: 0;">{{ service.contact }}</p>
             <p class="text">Rating</p>
             <p style="margin-bottom: 0;">{{ service.get_rating | floatformat:1 }}</p>
         </div>
         <div class="card-body">
-            <a class="btn btn-success" href="{% url 'service-detail-page' service.pk %} "> view </a></>
+            <a class="btn btn-success" href="{% url 'service-detail-page' service.slug %} "> view </a></>
         {#    <a href="#" class="card-link">Another link</a>#}
     </div>
 </div>

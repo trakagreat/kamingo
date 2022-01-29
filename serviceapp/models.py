@@ -5,7 +5,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from uuid import uuid4
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import User
-from address.models import AddressField
+from django.utils.text import slugify
 
 
 # file renaming function ----------------
@@ -16,6 +16,15 @@ def path_and_rename(instance, filename):
 
 
 # models ----------------------------
+
+class Address(models.Model):
+    address_line1 = models.CharField(max_length=100, null=True)
+    address_line2 = models.CharField(max_length=100, null=True, blank=True)
+    city = models.CharField(max_length=100, null=True)
+    pin_code = models.CharField(max_length=6, null=True)
+
+    def __str__(self):
+        return f"{self.address_line1}, {self.pin_code}, {self.city}"
 
 
 class CategoryModel(models.Model):
@@ -32,7 +41,9 @@ class ServiceModel(models.Model):
     cost = models.IntegerField()
     service_provider_name = models.CharField(max_length=100)
     contact = PhoneNumberField()
-    address = models.CharField(max_length=200, null=True)
+    address = models.ForeignKey(Address, on_delete=models.SET_NULL, related_name='address', null=True)
+    slug = models.SlugField(unique=True, db_index=True, null=True, blank=True)
+    description = models.CharField(max_length=600, null=True, blank=True)
     # address2 = AddressField(null=True, blank=True , on_delete=models.CASCADE)
 
     def __str__(self):
@@ -44,6 +55,14 @@ class ServiceModel(models.Model):
             return total / self.reviews.count()
         else:
             return 0
+
+    # def save(self, *args, **kwargs):
+    #     self.slug = slugify(self.title)
+    #     super(ServiceModel, self).save(*args, **kwargs)
+
+    def slugify(self):
+        self.slug = slugify(self.title)
+
 
 
 class ImageModel(models.Model):

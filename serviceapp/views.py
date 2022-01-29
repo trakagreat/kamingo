@@ -1,6 +1,6 @@
 import requests
 from django.shortcuts import render, reverse
-from .forms import ServiceForm, ReviewForm
+from .forms import ServiceForm, AddressForm
 from .models import ServiceModel, ReviewModel
 from django.views import View
 from django.views.generic import ListView
@@ -21,69 +21,90 @@ class FrontPageView(View):
         return render(request, 'serviceapp/front_page.html', context)
 
 
-# class ServiceListView(ListView):
-#     model = ServiceModel
-#     template_name = 'serviceapp/front_page.html'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['filter'] = ServiceFilter(self.request.GET, queryset=self.get_queryset())
-#         return context
-#
+class ServiceFormDesView(View):
+    def get(self, request, slug):
+        return render(request, 'serviceapp/service_form_description.html',{
+            'slug':slug
+        })
+
+    def post(self, request, slug):
+        des = request.POST.get('des')
+        service = ServiceModel.objects.get(slug=slug)
+        service.description = des
+        service.save()
+        return HttpResponseRedirect(reverse('front-page'))
+
+
 
 
 class ServiceFormView(View):
     def get(self, request):
         service_form = ServiceForm()
-        # service_form = ImageForm()
+        address_form = AddressForm()
         return render(request, 'serviceapp/service_form.html', {
             "form": service_form,
+            "address_form": address_form,
         })
 
     def post(self, request):
         service = ServiceForm(request.POST, request.FILES)
-        # service = ImageForm(request.POST , request.FILES)
+        address = AddressForm(request.POST)
         if service.is_valid():
             new_service = service.save(commit=False)
+            new_address = address.save(commit=False)
+            new_address.save()
+            new_service.address = new_address
+            new_service.slugify()
             new_service.save()
-            return HttpResponseRedirect(reverse('front-page'))
+            slug = new_service.slug
+            return HttpResponseRedirect(reverse('service_form_des_url', kwargs={
+                'slug': slug,
+            }))
         else:
             return render(request, 'serviceapp/service_form.html', {
-                "form": service
+                "form": service,
+                'address_form': address
             })
 
 
 class ServiceDetailView(View):
-    def get(self, request, pk):
-        service = ServiceModel.objects.get(pk=pk)
-        review_form = ReviewForm()
+    def get(self, request, slug):
+        service = ServiceModel.objects.get(slug=slug)
         if request.user.is_authenticated:
             user_review = ReviewModel.objects.filter(service=service, user=request.user)
         else:
             user_review = None
         context = {
             'service': service,
-            'form': review_form,
             'user_review': user_review,
         }
 
         return render(request, 'serviceapp/service_detail_page.html', context)
 
-    def post(self, request, pk):
-        review = ReviewForm(request.POST)
-        service = ServiceModel.objects.get(pk=pk)
-        if review.is_valid():
-            new_review = review.save(commit=False)
-            new_review.service = service
-            new_review.user = request.user
-            new_review.save()
-            return HttpResponseRedirect(reverse('service-detail-page', kwargs={
-                'pk': pk,
-            }))
+    def post(self, request, slug):
+        rating = int(request.POST.get('rating'))
+        content = request.POST.get('content')
+        service = ServiceModel.objects.get(slug=slug)
+        new_review = ReviewModel(rating=rating, content=content)
+        new_review.service = service
+        new_review.user = request.user
+        new_review.save()
+        return HttpResponseRedirect(reverse('service-detail-page', kwargs={
+            'slug': slug,
+        }))
 
-        context = {
-            'service': service,
-            'form': review,
-        }
-
-        return render(request, 'serviceapp/service_detail_page.html', context)
+        # if review.is_valid():
+        #     new_review = review.save(commit=False)
+        #     new_review.service = service
+        #     new_review.user = request.user
+        #     new_review.save()
+        #     return HttpResponseRedirect(reverse('service-detail-page', kwargs={
+        #         'pk': pk,
+        #     }))
+        #
+        # context = {
+        #     'service': service,
+        #     'form': review,
+        # }
+        #
+        # return render(request, 'serviceapp/service_detail_page.html', context)

@@ -17,9 +17,9 @@
 {% block body %}
     <div class="container mt-3">
         <div class="row">
-            <div class="col-md-6 p-3" style="background-color: white">
+            <div class="col-md-6 p-3" style="background-color: white;">
                 {% if service.image %}
-                    <img width="100%" height="500rem" style="" src="{{ service.image.url }}" alt="">
+                    <img  width="100%" height="500rem" style="" src="{{ service.image.url }}" alt="">
                 {% endif %}
             </div>
             <div class="col-md-6 p-3" style="background-color: white">
@@ -70,55 +70,10 @@
                 {% if not user_review %}
 
             <div class="row p-2" style="background-color: white">
-                <div class="col">
-
-                    <form method="POST" action="{% url 'service-detail-page' service.pk %}" novalidate>
-                       {% csrf_token %}
-                        <div class="row">
-                           <div class="col">
-                                   <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample"
-                                   role="button" aria-expanded="false" aria-controls="collapseExample">
-                                    Give Review
-                                </a>
-                           </div>
-                           <div class="col"></div>
-
-                    </div>
-
-                        <div id="collapseExample">
 
 
-                        <div class="row"  style="margin-left: 3rem; margin-top: 0.5rem">
-                                <div class="col-md-12 mt-3 ">
-                                    <p class="mb-0">
-                                        {{ form.rating.label_tag|title }}
-                                    </p>
-                                </div>
-                                <div class="col-md-12  ">
-                                    <p>
-                                        {{ form.rating }}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row " style="margin-left: 3rem;">
-                                <div class="col-md-12 ">
-                                    <p class="mb-0">
-                                        {{ form.content.label_tag|title }}
-                                    </p>
-                                </div>
-                                <div class="col-md-12">
-                                    <p>
-                                        {{ form.content }}
-                                    </p>
-                                </div>
-                                <div class="col-md-12">
-                                    <button class="btn btn-success" type="submit"> submit</button>
-                                </div>
+                        {% include 'serviceapp/includes/review_form.html' %}
 
-                            </div>
-                        </div>
-                    </form>
-                </div>
                 <div class="col"></div>
 
 

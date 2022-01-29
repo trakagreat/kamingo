@@ -36,6 +36,9 @@ INSTALLED_APPS = [
     'serviceapp',
     'django.contrib.admin',
     'django.contrib.auth',
+    'crispy_forms',
+    'widget_tweaks',
+    'bootstrap5',
 
     'star_ratings',
     'django_heroku',
