@@ -14,36 +14,27 @@
     {{ form.media }}
 {% endblock %}
 {% block body %}
-
-    <div class=" m-3">
-
-
+    <div class="container mt-3">
         <form method="POST" action="{% url 'service_form_des_url' slug %}" enctype="multipart/form-data">
             {% csrf_token %}
+            <div class="row">
+                <div class="col-1 col-md-2"></div>
+                <div class="col-10 col-md-8 ">
+                    <div class="p-3 shadow-sm " style="background-color: white;">
+                        <p class="mb-3 " style="color: gray">Write a Description:</p>
 
-            <div class="md-3" style="">
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6">
+                        <textarea class="form-control" id="textAreaExample" rows="8"></textarea>
+                        <div class="text-center">
 
-                        <div class="shadow-sm " style="padding: 2rem; background-color: white; text-align: left;">
-                            <p class="mb-3" style="color: gray">Write a Description:</p>
-                            <textarea class="form-control" id="textAreaExample" rows="8"></textarea>
 
-                            <div class="mb-3 d-flex justify-content-center">
-                            <button class="btn btn-outline-primary mt-2">Submit</button>
-
-                            </div>
+                        <button style="width: max-content;" class="btn btn-outline-primary mt-2">Submit</button>
                         </div>
-                        <div class="col-md-3"></div>
+
                     </div>
+                    <div class="col-1 col-md-2"></div>
                 </div>
 
             </div>
-
         </form>
-
     </div>
-
-
 {% endblock %}

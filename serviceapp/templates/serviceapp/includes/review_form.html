@@ -1,6 +1,6 @@
 <div class="col">
 
-    <form method="POST" action="{% url 'service-detail-page' service.pk %}" novalidate>
+    <form method="POST" action="{% url 'service-detail-page' service.slug %}" novalidate>
         {% csrf_token %}
         <div class="row">
             <div class="col pb-2" >
